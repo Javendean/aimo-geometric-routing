@@ -2,11 +2,13 @@
 
 | Constraint | Value | Source |
 |-----------|-------|--------|
-| **Problems** | **50 (NOT 110)** | Competition rules |
+| **Public test** | **50 problems** | Competition rules |
+| **Private test** | **50 DISTINCT problems (separate set)** | Competition rules |
 | Model | gpt-oss-120B, MoE (5.1B active of 117B), MXFP4 quantization | Kaggle model card |
 | GPU | Single H100 80GB | kernel-metadata.json: NvidiaH100 |
 | Context window | 32,768 tokens | vLLM --max-model-len 32768 |
 | Exemplar budget | ~13,784 tokens (after system prompt + generation reserve) | Measured |
+| Difficulty range | National Olympiad to IMO (some easier, some harder) | Competition rules |
 | Time budget | 5 hours for 50 problems (~6 min/problem average) | Competition rules |
 | Environment | Air-gapped Kaggle, no internet, no fine-tuning | Competition rules |
 | Answer format | Integer in [0, 99999] (5 digits, up from 3 in AIMO2) | Competition rules |

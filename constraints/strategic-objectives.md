@@ -45,12 +45,30 @@ Awarded to the highest-ranked team that solved the most difficult problem(s) in 
 
 ## The Math Gap
 
-Current: 39.7/50 (baseline), 4/10 on reference bench
+Current: 39.7/50 (public baseline), 4/10 on reference bench
 Target: 47/50 minimum, 50/50 goal
 
-This is NOT a 7-point gap — it's a CAPABILITY gap. The model fails ALL 6 AIMO3-level reference problems. Going from 0/6 to 6/6 on hard problems requires:
-- Either a fundamental capability improvement (fine-tuning, LoRA adapters)
-- Or a radically different inference strategy (Aragon's geometric interventions?)
-- Or both
+### Problem Sets
+- **Public test**: 50 problems (scored during submission period)
+- **Private test**: 50 DISTINCT problems (scored after deadline, determines winner)
+- **Difficulty**: national Olympiad to IMO, some easier, some harder
 
-Prompt optimization alone (routing, exemplars, temperature) has been empirically shown to NOT work on this model (23-strategy paper: all failed).
+### Estimated Difficulty Distribution (from reference bench)
+| Tier | ~% of 50 | Model solves | Reference bench evidence |
+|------|----------|-------------|------------------------|
+| Easy (national olympiad) | ~20% (~10) | Yes | Problems 1-4: 4/4 |
+| Medium-hard (AIMO3 level) | ~60% (~30) | No | Problems 5-9: 0/5 |
+| Very hard (hardest IMO) | ~20% (~10) | No | Problem 10: 0/1 |
+
+### To score 47/50:
+Need to solve ~47 of 50. Even if all ~10 easy problems are perfect, that's 37 more from the 40 medium/hard problems. The model currently solves ZERO of these.
+
+This is a CAPABILITY gap, not an optimization gap.
+
+### Paths to close the gap (speculative):
+1. **Fine-tuning** (LoRA on Azure → upload adapters) — changes model capability directly
+2. **Massive sample scaling** (N=50+ with GenSelect) — more lottery tickets
+3. **Geometric interventions** (Aragon's latent trajectory steering) — changes how existing capability is used
+4. **Code execution leverage** (Tool-Integrated Reasoning) — offload computation to Python
+
+Prompt optimization alone has been empirically shown to NOT work (23-strategy paper: 23 strategies, all failed).
