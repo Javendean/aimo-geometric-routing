@@ -52,12 +52,16 @@ We originally framed this as "should we route by topic?" That framing was too na
 
 3. Is prompt-level topic routing **operating on the wrong layer**? Evidence 2 says operate on latent trajectory geometry, not domain structure. Evidence 3 says readable structure ≠ computational structure. The 23-strategy paper's failure may be because all prompt interventions operate at the wrong level.
 
-4. The two-run scoring is expectation-neutral (E[score] = p). This means variance between runs is NOT penalized in expectation. The ONLY question for any strategy is: does it increase per-problem accuracy? If adding randomness increases p, do it — even if the two runs disagree more often.
+4. The two-run scoring is expectation-neutral (E[score] = p). The ONLY question for any strategy is: does it increase per-problem accuracy?
+
+5. Aragon says "geometry tells you what to do with the compute you have." But **what if the compute budget itself can change?** TurboQuant (ICLR 2026) compresses the KV cache from 8-bit to 3-bit, potentially doubling the sample budget from N=8 to N=16+. The optimal ORGANIZATION of reasoning depends on the RESOURCE LEVEL — the best strategy for 8 samples may differ from the best strategy for 16. See `empirical-evidence/turboquant-kv-cache.md` for the details and 5 open feasibility questions.
 
 ## Environment
 
 Single H100 80GB, air-gapped Kaggle, 32K context, 5 hours for 50 problems (~6 min/problem), MoE architecture (5.1B active of 117B), no fine-tuning at runtime. Single operator with unlimited compute budget and frontier AI access (Azure + GPT-5.4-pro). Competition deadline April 15.
 
 **Important:** Fine-tuning is possible OFFLINE (Azure) with adapter upload to Kaggle. Weight-level separation via LoRA is feasible if the architectural insight justifies it.
+
+The primary goal is to win the overall progress prize (top score on private leaderboard, currently 46/50). The $30K hard problem prize is a hedge. Full strategic objectives: `constraints/strategic-objectives.md`
 
 The evidence is all here. The form of the solution is up to you.
