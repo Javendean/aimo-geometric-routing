@@ -2,7 +2,7 @@
 
 ## The Problem
 
-An MoE math solver (gpt-oss-120B, 117B params, 5.1B active, single H100) scores 4/10 on the AIMO 3 reference bench. It solves AIMO2-level problems perfectly but fails ALL AIMO3-level problems. The gap to frontier models (10/10) is 6 problems.
+An MoE math solver (gpt-oss-120B, 117B params, 5.1B active, single H100) scores **44/50 on the public test** (reference notebook) and 4/10 on the harder reference bench. The current competition leader scores 46/50. We need 47+ to win. The gap is 3 points from our proven baseline — an optimization problem, not a capability problem.
 
 The model has more than enough parameters. The question is how its existing capacity is ORGANIZED for mathematical reasoning.
 

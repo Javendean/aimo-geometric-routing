@@ -15,8 +15,9 @@
 | Submission format | kaggle_evaluation.aimo_3_inference_server + submission.parquet | Competition portal |
 | Problem taxonomy | algebra, combinatorics, geometry, number_theory | IMO standard |
 | Cross-topic fraction | ~25-30% of problems span multiple categories | Estimated from past IMO |
-| Current score | ~39.7/50 baseline (T=1.0, N=8, majority vote) | Measured |
-| Ceiling observed | ~44/50 (reference notebook) | Kaggle public leaderboard |
+| Proven baseline | **44/50** (reference notebook, gpt-oss-120B) | Kaggle public leaderboard |
+| Paper baseline | 39.7/50 mean (T=1.0, N=8, majority vote, no optimizations) | March 2026 paper |
+| Current leader | 46/50 | Kaggle public leaderboard |
 
 ## Scoring System (Critical for Strategy)
 

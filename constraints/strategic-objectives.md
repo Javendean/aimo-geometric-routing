@@ -5,7 +5,7 @@
 ### 1. Score >= 47/50 consistently (competitive floor)
 The current PUBLIC leaderboard top score is **46/50**. To win the hard problem prize, we must be the highest-ranked team — meaning we need **at minimum 47/50** to beat the leader. The leader will likely improve before the April 15 deadline, so the real target is probably 48-50.
 
-Current baseline: 39.7/50. Gap: 7.3-10.3 points.
+Proven baseline: 44/50 (reference notebook with gpt-oss-120B). Gap: 3-6 points. The 39.7 figure is from a paper's unoptimized config — the reference notebook already achieves 44.
 
 **Implication for variance:** Even though the scoring mechanism is expectation-neutral (E[score] = p), the minimum threshold objective makes variance harmful. A solver with E=48 and high variance might realize 44 (below threshold). A solver with E=47.5 and low variance is safer.
 
@@ -49,7 +49,9 @@ Awarded to the highest-ranked team that solved the most difficult problem(s) in 
 
 ## The Math Gap
 
-Current: 39.7/50 (public baseline), 4/10 on reference bench
+Proven baseline: 44/50 (reference notebook), 4/10 on reference bench
+Paper baseline: 39.7/50 (unoptimized T=1.0, N=8, majority vote)
+Current leader: 46/50
 Target: 47/50 minimum, 50/50 goal
 
 ### Problem Sets
@@ -65,9 +67,9 @@ Target: 47/50 minimum, 50/50 goal
 | Very hard (hardest IMO) | ~20% (~10) | No | Problem 10: 0/1 |
 
 ### To score 47/50:
-Need to solve ~47 of 50. Even if all ~10 easy problems are perfect, that's 37 more from the 40 medium/hard problems. The model currently solves ZERO of these.
+The reference notebook already achieves 44/50. The gap is 3 more problems correct. The leader at 46/50 shows this is achievable with gpt-oss-120B — someone has already done it.
 
-This is a CAPABILITY gap, not an optimization gap.
+The gap from 44→47 is an OPTIMIZATION gap (3 more problems), not a capability gap. The model CAN solve most of these — the reference notebook proves it. The question is what the 44/50 notebook does differently from our 39.7 baseline, and how to push it further.
 
 ### Paths to close the gap (speculative):
 1. **Fine-tuning** (LoRA on Azure → upload adapters) — changes model capability directly
