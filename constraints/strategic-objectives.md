@@ -2,8 +2,10 @@
 
 ## Three Objectives (Ranked)
 
-### 1. Score >= 47/50 consistently (minimum threshold)
-The model must score at least 47 on EVERY submission. This is a hard floor, not an expected value target. Current baseline: 39.7/50. Gap: 7.3 points (~7 more problems correct).
+### 1. Score >= 47/50 consistently (competitive floor)
+The current PUBLIC leaderboard top score is **46/50**. To win the hard problem prize, we must be the highest-ranked team — meaning we need **at minimum 47/50** to beat the leader. The leader will likely improve before the April 15 deadline, so the real target is probably 48-50.
+
+Current baseline: 39.7/50. Gap: 7.3-10.3 points.
 
 **Implication for variance:** Even though the scoring mechanism is expectation-neutral (E[score] = p), the minimum threshold objective makes variance harmful. A solver with E=48 and high variance might realize 44 (below threshold). A solver with E=47.5 and low variance is safer.
 
@@ -22,9 +24,11 @@ Awarded to the highest-ranked team that solved the most difficult problem(s) in 
 - Tiebreaker: submission time (first to submit wins)
 
 **Implication:** This rewards:
-1. Solving problems nobody else can solve (novelty > reliability)
-2. Submitting EARLY (tiebreaker = time)
-3. Disproportionate compute on the hardest problems
+1. Being the **highest-ranked team** that solved the hardest problem (score IS the qualifier)
+2. Solving problems nobody else can solve (novelty)
+3. Submitting EARLY (tiebreaker among equal-ranked solvers)
+
+**Current leaderboard: 46/50.** To qualify for the hard problem prize, we need to beat this score AND solve the hardest problem. Score and hard-problem solving are NOT independent objectives — they're linked through the "highest-ranked" requirement.
 
 ## Strategic Tensions
 
