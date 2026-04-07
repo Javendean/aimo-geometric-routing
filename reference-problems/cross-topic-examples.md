@@ -1,34 +1,25 @@
-# Cross-Topic Problems (25-30% of AIMO 3)
+# Cross-Topic Analysis of AIMO 3 Reference Problems
 
-These problems span multiple categories. They test whether routing to a single topic helps or hurts.
+The 10 reference problems demonstrate why naive topic routing is hard.
 
-## Problem 1: Combinatorial Number Theory
-How many integers from 1 to 1000 can be expressed as the difference of two perfect squares?
+## Key Observation from Model Evaluation
 
-**Topics:** number theory (perfect squares, parity) + combinatorics (counting)
-**Routing challenge:** A number theory strategy focuses on modular arithmetic. A combinatorics strategy focuses on enumeration. The optimal approach uses the algebraic identity $a^2 - b^2 = (a+b)(a-b)$ and then counts — a hybrid.
+gpt-oss-120B solves Problems 1-4 (AIMO2 difficulty) but NONE of Problems 5-10 (AIMO3 difficulty). This means any routing strategy must be evaluated on Problems 5-10, not 1-4 — the model already solves the easy ones regardless of routing.
 
-## Problem 2: Algebraic Geometry
-In the coordinate plane, find the area of the region bounded by $|x| + |y| \leq 4$ and $x^2 + y^2 \leq 8$.
+## Topic Classification Challenges
 
-**Topics:** geometry (area, curves) + algebra (inequalities, intersection)
-**Routing challenge:** Pure geometry uses integration. Pure algebra uses substitution. The fastest approach is geometric reasoning (the diamond inscribes the circle) with algebraic verification.
+Several reference problems resist single-topic classification:
 
-## Problem 3: Number Theory + Combinatorics
-How many ordered triples $(a, b, c)$ of positive integers satisfy $\text{lcm}(a, b, c) = 2^3 \cdot 3^2 \cdot 5$?
-
-**Topics:** number theory (prime factorization, lcm) + combinatorics (counting via exponent vectors)
-**Routing challenge:** The problem decomposes into independent choices per prime ($\max(a_p, b_p, c_p) = e_p$), making it combinatorial once the number-theoretic structure is seen.
+- **Problem 2** (rectangles with unique perimeters): combinatorics (construction) + number theory (semi-perimeter bounds) + optimization (proving maximality)
+- **Problem 4** (polynomial with integer roots): algebra (polynomial factoring) + number theory (divisor analysis) + combinatorics (counting valid factorizations)
+- **Problem 10** (adapted existing problem): likely draws on multiple techniques
 
 ## Implications for Routing
 
-Cross-topic problems are 25-30% of AIMO 3. If routing assigns them to a single topic, it may:
-- Miss the hybrid strategy that's fastest
-- Apply topic-specific exemplars that are only partially relevant
-- Waste the exemplar token budget on irrelevant examples
+1. **Topic overlap**: At IMO level, most problems require techniques from 2+ topics. Routing to a single topic's exemplars may provide the WRONG strategy hints.
 
-Options:
-1. Route to dominant topic, accept suboptimality on cross-topic
-2. Don't route cross-topic problems (use generic baseline)
-3. Route to MULTIPLE topics (inject exemplars from both, double the token cost)
-4. Use a "cross-topic" strategy specifically designed for hybrid problems
+2. **Difficulty-dependent routing**: Problems 1-4 don't need routing (model solves them anyway). Problems 5-10 are where routing could help — but these are exactly the problems where topic classification is most ambiguous.
+
+3. **Exemplar selection**: If routing provides worked examples, the examples must be at AIMO3 difficulty level. Providing AMC-level examples for an IMO-level problem wastes context tokens on irrelevant strategies.
+
+4. **The real question**: Is the gain from topic-specific strategy hints (inter-problem routing) enough to overcome the cost of misclassification on cross-topic problems?
