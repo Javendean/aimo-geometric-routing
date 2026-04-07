@@ -38,7 +38,7 @@ Eight articles in `aragon-research/` present a unified paradigm: **intelligence 
 - One correct → 0.5
 - Neither → 0.0
 
-**Consistency is rewarded. Variance is penalized.** This favors deterministic strategies over diverse ones.
+The scoring is **expectation-neutral**: E[score] = p (per-problem accuracy) regardless of inter-run variance. Diversity between runs is neither rewarded nor penalized in expectation. The only question is: does a strategy increase per-problem accuracy?
 
 Full constraints: `constraints/competition-constraints.md`
 
@@ -52,7 +52,7 @@ We originally framed this as "should we route by topic?" That framing was too na
 
 3. Is prompt-level topic routing **operating on the wrong layer**? Evidence 2 says operate on latent trajectory geometry, not domain structure. Evidence 3 says readable structure ≠ computational structure. The 23-strategy paper's failure may be because all prompt interventions operate at the wrong level.
 
-4. Given the two-run scoring, any strategy that introduces **variance between runs** is penalized. Geometric interventions that are **deterministic** (same exemplars, same structure every run) are safer than random ones (temperature diversity, prompt perturbation).
+4. The two-run scoring is expectation-neutral (E[score] = p). This means variance between runs is NOT penalized in expectation. The ONLY question for any strategy is: does it increase per-problem accuracy? If adding randomness increases p, do it — even if the two runs disagree more often.
 
 ## Environment
 

@@ -36,7 +36,7 @@
 
 ### Strategic Implications
 
-1. **Consistency > diversity.** If your solver reliably produces the correct answer, both runs agree → 1.0. If you introduce randomness/diversity between runs, you risk 0.5 on problems where one run gets lucky and the other doesn't.
+1. **Expectation-neutral scoring.** E[score] = p (per-problem accuracy) regardless of whether runs are identical or independent. Diversity between runs is NOT penalized in expectation. The only strategic question is whether a change increases p.
 
 2. **High temperature hurts on easy problems.** T=1.0 with majority vote may produce different majority answers between runs. For problems the model CAN solve, lower variance → both runs agree → full points.
 
